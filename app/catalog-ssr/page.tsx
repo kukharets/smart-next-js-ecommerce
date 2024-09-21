@@ -19,25 +19,27 @@ export default async function CatalogPage({ searchParams }: CatalogProps) {
     const products: Product[] = await res.json();
 
     return (
-        <div>
-            <h1>Product Titles (Page {page})</h1>
-            <ul>
+        <div className="h-full">
+            <div className="catalog-filter"><h1>Product Titles (Page {page})</h1>
+                <div>
+                    {page > 1 && (
+                        <a href={`?page=${page - 1}`}>
+                            <button>Previous Page</button>
+                        </a>
+                    )}
+                    <a href={`?page=${page + 1}`}>
+                        <button>Next Page</button>
+                    </a>
+                </div>
+            </div>
+            <div className='flex flex-col h-full'>
                 {products.map((product) => (
-                    <li key={product.id}>{product.title}</li>
+                    <li key={product.id} className="list-none">{product.title}</li>
                 ))}
-            </ul>
+            </div>
 
             {/* Пагінація */}
-            <div>
-                {page > 1 && (
-                    <a href={`?page=${page - 1}`}>
-                        <button>Previous Page</button>
-                    </a>
-                )}
-                <a href={`?page=${page + 1}`}>
-                    <button>Next Page</button>
-                </a>
-            </div>
+
         </div>
     );
 }
