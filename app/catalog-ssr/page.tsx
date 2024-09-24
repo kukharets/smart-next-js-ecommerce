@@ -18,7 +18,7 @@ export default async function CatalogPage({ searchParams }: CatalogProps) {
 
   return (
     <div>
-      <div className="flex gap-1 flex-col">
+      <div className="flex flex-wrap gap-2 justify-center">
         {products.map(product => (
           <ProductCard key={product.id} {...product} />
         ))}

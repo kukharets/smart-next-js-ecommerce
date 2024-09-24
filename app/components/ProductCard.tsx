@@ -25,6 +25,7 @@ export const ProductCard = ({
       boxShadow="lg"
       bg="white"
       p={6}
+      minWidth={'300px'}
       className="m-5"
       transition="transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out"
       _hover={{
