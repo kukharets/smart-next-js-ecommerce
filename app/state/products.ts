@@ -1,44 +1,57 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-interface ProductState {
-    items: any[];  // Тут можеш замінити any на точний тип продукту, якщо відомо
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
+export interface IProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  images: string[];
+  creationAt: string;
+  updatedAt: string;
+  category: {
+    id: number;
+    name: string;
+    image: string;
+    creationAt: string;
+  };
 }
 
-const initialState: ProductState = {
-    items: [],
-    status: 'idle',
-    error: null,
+interface IProductSliceState {
+  data: IProduct[];
+  error: string;
+  isLoading: boolean;
+}
+
+const initialState: IProductSliceState = {
+  data: [],
+  error: '',
+  isLoading: false,
 };
 
-export const fetchProducts = createAsyncThunk(
-    'products/fetchProducts',
-    async () => {
-        const response = await axios.get('https://api.escuelajs.co/api/v1/products');
-        return response.data;
-    }
+export const fetchProducts = createAsyncThunk('products/fetchProducts', () =>
+  axios
+    .get<IProduct[]>('https://api.escuelajs.co/api/v1/products')
+    .then(response => response.data)
 );
 
 const productSlice = createSlice({
-    name: 'products',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchProducts.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.items = action.payload;
-            })
-            .addCase(fetchProducts.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || null;
-            });
-    }
+  name: 'products',
+  initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchProducts.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.isLoading = true;
+        state.data = action.payload;
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.error = action.error.message || '';
+      });
+  },
 });
 
 export default productSlice.reducer;
