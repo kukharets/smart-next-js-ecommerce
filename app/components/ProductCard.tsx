@@ -19,13 +19,12 @@ export const ProductCard = ({
 }: IProduct) => {
   return (
     <Box
-      maxW="sm"
       borderRadius="lg"
       overflow="hidden"
       boxShadow="lg"
       bg="white"
       p={6}
-      minWidth={'300px'}
+      maxWidth="400px"
       className="m-5"
       transition="transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out"
       _hover={{
@@ -42,16 +41,16 @@ export const ProductCard = ({
         h="300px"
       />
 
-      <Stack mt={4} spacing={3}>
+      <Stack mt={4} spacing={3} flexGrow={1}>
         <Badge colorScheme="green" fontSize="md">
           {category.name}
         </Badge>
 
-        <Heading size="md" color="gray.800">
+        <Heading minHeight="50px" noOfLines={2} size="md" color="gray.800">
           {title}
         </Heading>
 
-        <Text color="gray.600" fontSize="sm">
+        <Text color="gray.600" fontSize="sm" noOfLines={3}>
           {description}
         </Text>
 
@@ -60,11 +59,12 @@ export const ProductCard = ({
         </Text>
 
         <Button
-          colorScheme="orange"
+          bg="main.400"
+          color="white"
           size="lg"
           w="full"
           _hover={{
-            bgGradient: 'linear(to-r, orange.400, lime.400)',
+            bgGradient: 'linear(to-r, main.400, secondary.400)',
             color: 'white',
           }}
         >

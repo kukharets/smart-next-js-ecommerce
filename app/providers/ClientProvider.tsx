@@ -1,8 +1,7 @@
 'use client';
 import { Provider } from 'react-redux';
 import store from '@state/store';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { Box, Flex } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme, Box, Flex } from '@chakra-ui/react';
 
 const theme = extendTheme({
   colors: {
@@ -37,9 +36,8 @@ export default function ClientWrapper({
             w="100%"
             zIndex={1000}
           >
-            Perfect ecommerce example By Taras Kukharets
+            Smart ecommerce example By Taras Kukharets
           </Box>
-
           <Box as="main" flex="1" mt="16" p={4} overflowY="auto">
             {children}
           </Box>
@@ -52,7 +50,7 @@ export default function ClientWrapper({
             bottom={0}
             w="100%"
           >
-            <Flex gap={10} justifyContent={'center'}>
+            <Flex gap={10} justifyContent="center">
               <p>Contact</p>
               <p>Source code</p>
             </Flex>
