@@ -2,7 +2,9 @@
 import { Box, Icon, Text } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { PriceSlider } from '@app/catalog-ssr/PriceSlider';
+import { PriceSliderGPT } from '@app/catalog-ssr/PriceSliderGPT';
+import { PriceSliderAA } from '@app/catalog-ssr/PriceSliderAA';
+import { PriceSliderCopilot } from '@app/catalog-ssr/PriceSliderCopilot';
 
 export const Filter = () => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
@@ -77,7 +79,9 @@ export const Filter = () => {
           boxShadow="inner"
           borderRadius="20px"
         >
-          <PriceSlider maxPrice={300} minPrice={1} />
+          <PriceSliderCopilot maxPrice={300} minPrice={1} />
+          <PriceSliderGPT maxPrice={300} minPrice={1} />
+          <PriceSliderAA maxPrice={300} minPrice={1} />
         </Box>
       )}
     </Box>
