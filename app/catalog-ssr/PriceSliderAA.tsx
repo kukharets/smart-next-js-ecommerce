@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useUrlParams } from '@app/hooks/useUrlParams';
+import { Range, getTrackBackground } from 'react-range';
 import { debounce } from 'lodash';
+import { useUrlParams } from '@app/hooks/useUrlParams';
 
 interface Props {
   maxPrice: number;
@@ -24,43 +25,48 @@ export const PriceSliderAA: React.FC<Props> = React.memo(
       updateUrlWithDebounce(priceRange[0], priceRange[1]);
     }, [priceRange]);
 
-    const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = parseInt(e.target.value);
-      const newMinPrice = value < priceRange[1] ? value : priceRange[0];
-      const newMaxPrice = value > priceRange[0] ? value : priceRange[1];
-      setPriceRange([newMinPrice, newMaxPrice]);
-    };
-
     return (
-      <div className="flex flex-col justify-center items-center p-6 bg-gradient-to-r from-gray-100 to-gray-200 shadow-xl rounded-lg w-full border border-gray-300">
-        <h2 className="text-xl font-bold text-center text-teal-500 mb-4 uppercase">
+      <div className="w-full p-6 flex flex-col justify-center items-center bg-gradient-to-r from-gray-100 to-gray-200 shadow-xl rounded-lg border border-gray-300">
+        <div className="text-center font-bold text-blue-600 text-xl mb-4 uppercase">
           Price Range
-        </h2>
-        <div className="relative w-full">
-          <input
-            type="range"
-            min={minPrice}
-            max={maxPrice}
-            step="10"
-            value={priceRange[0]}
-            onChange={handleSliderChange}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-          />
-          <input
-            type="range"
-            min={minPrice}
-            max={maxPrice}
-            step="10"
-            value={priceRange[1]}
-            onChange={handleSliderChange}
-            className="absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer top-0"
-            style={{ zIndex: 1 }}
-          />
         </div>
-        <div className="mt-4 text-center">
-          <span className="text-lg font-semibold text-gray-700">
-            ${priceRange[0]} - ${priceRange[1]}
-          </span>
+        <Range
+          step={10}
+          min={minPrice}
+          max={maxPrice}
+          values={priceRange}
+          onChange={values => setPriceRange(values)}
+          renderTrack={({ props, children }) => (
+            <div
+              {...props}
+              style={{
+                ...props.style,
+                height: '12px',
+                width: '100%',
+                backgroundColor: '#ccc',
+                display: 'flex',
+                borderRadius: '5px',
+                background: getTrackBackground({
+                  values: priceRange,
+                  colors: ['#0EA5E9', '#ccc'],
+                  min: minPrice,
+                  max: maxPrice,
+                }),
+              }}
+            >
+              {children}
+            </div>
+          )}
+          renderThumb={({ props }) => (
+            <div
+              {...props}
+              className="w-6 h-6 bg-blue-600 rounded-full focus:outline-none"
+              style={{ ...props.style }}
+            />
+          )}
+        />
+        <div className="mt-4 text-center text-gray-700 text-lg font-semibold">
+          ${priceRange[0]} - ${priceRange[1]}
         </div>
       </div>
     );
