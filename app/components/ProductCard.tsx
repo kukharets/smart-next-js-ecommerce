@@ -1,13 +1,3 @@
-import {
-  Box,
-  Image,
-  Text,
-  Heading,
-  Button,
-  Stack,
-  Badge,
-  Flex,
-} from '@chakra-ui/react';
 import { IProduct } from '@state/products';
 
 export const ProductCard = ({
@@ -18,69 +8,32 @@ export const ProductCard = ({
   price,
 }: IProduct) => {
   return (
-    <Box
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="lg"
-      bg="white"
-      p={6}
-      maxWidth="400px"
-      className="m-5"
-      transition="transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out"
-      _hover={{
-        transform: 'scale(1.05)',
-        boxShadow: '2xl',
-      }}
-    >
-      <Image
+    <div className="m-5 transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl p-6 bg-white max-w-xl rounded-lg shadow-lg overflow-hidden">
+      <img
+        className="rounded-lg w-full h-72 object-cover"
         src={images[0]}
         alt={title}
-        borderRadius="lg"
-        objectFit="cover"
-        w="full"
-        h="300px"
       />
-
-      <Stack mt={4} spacing={3} flexGrow={1}>
-        <Badge colorScheme="green" fontSize="md">
+      <div className="mt-4 space-y-3 flex-grow">
+        <span className="px-3 py-1 text-sm font-semibold text-green-500 uppercase inline-flex items-center rounded-full">
           {category.name}
-        </Badge>
-
-        <Heading minHeight="50px" noOfLines={2} size="md" color="gray.800">
+        </span>
+        <h2 className="text-gray-800 text-md leading-tight truncate-2-lines min-h-[50px]">
           {title}
-        </Heading>
-
-        <Text color="gray.600" fontSize="sm" noOfLines={3}>
-          {description}
-        </Text>
-
-        <Text fontSize="xl" fontWeight="bold" color="orange.400">
-          ${price}
-        </Text>
-
-        <Button
-          bg="main.400"
-          color="white"
-          size="lg"
-          w="full"
-          _hover={{
-            bgGradient: 'linear(to-r, main.400, secondary.400)',
-            color: 'white',
-          }}
-        >
+        </h2>
+        <p className="text-gray-600 text-sm truncate-3-lines">{description}</p>
+        <p className="text-xl font-bold text-orange-400">${price}</p>
+        <button className="w-full lg text-white bg-main-400 hover:bg-gradient-r hover:from-main-400 hover:to-secondary-400 transition-all duration-300">
           Buy now
-        </Button>
-      </Stack>
-
-      <Flex justify="center" mt={4}>
-        <Image
+        </button>
+      </div>
+      <div className="flex justify-center mt-4">
+        <img
+          className="w-12 h-12 object-cover rounded-full"
           src={category.image}
           alt={category.name}
-          boxSize="50px"
-          objectFit="cover"
-          borderRadius="full"
         />
-      </Flex>
-    </Box>
+      </div>
+    </div>
   );
 };

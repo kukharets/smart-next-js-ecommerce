@@ -11,7 +11,7 @@ export default async function CatalogPage({ searchParams }: CatalogProps) {
   const productsPerPage = 10;
   const priceMaxRange = searchParams.maxPrice
     ? parseInt(searchParams.maxPrice)
-    : 1;
+    : 100;
 
   const res = await fetch(
     `https://api.escuelajs.co/api/v1/products?limit=${productsPerPage}&offset=${
@@ -19,7 +19,7 @@ export default async function CatalogPage({ searchParams }: CatalogProps) {
     }&price_min=1&price_max=${priceMaxRange}`
   );
   const products: IProduct[] = await res.json();
-  console.log(products);
+
   return (
     <div>
       <div className="flex flex-wrap gap-2 justify-center">
