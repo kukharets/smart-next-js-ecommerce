@@ -1,16 +1,20 @@
 'use client';
 import { EditIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
-import { PriceSliderAA } from '@app/catalog-ssr/PriceSliderAA';
+import { useEffect, useState } from 'react';
+import { PriceSlider } from '@app/components/PriceSlider';
+import { IProduct } from '@state/products';
 
-export const Filter = () => {
+export const Filter = ({ products }: { products: IProduct[] }) => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
+  console.log(products);
+
+  useEffect(() => {}, [isFilterOpened]);
 
   return (
     <div
       onMouseEnter={() => setIsFilterOpened(true)}
       onMouseLeave={() => setIsFilterOpened(false)}
-      className={`absolute top-0 left-0 mt-14 flex flex-col items-center transition-all duration-300 ease-in-out z-10 shadow-xl ${
+      className={`absolute top-0 left-0 mt-16 flex flex-col items-center transition-all duration-300 ease-in-out z-10 shadow-xl ${
         isFilterOpened
           ? 'w-64 min-h-screen rounded-r-2xl bg-gradient-to-b from-white to-gray-200'
           : 'w-32 rounded-2xl shadow-lg bg-gradient-to-b from-second to-white'
@@ -40,7 +44,7 @@ export const Filter = () => {
           )}
         </div>
       </div>
-      {isFilterOpened && <PriceSliderAA maxPrice={300} minPrice={1} />}
+      {isFilterOpened && <PriceSlider maxPrice={300} minPrice={1} />}
     </div>
   );
 };

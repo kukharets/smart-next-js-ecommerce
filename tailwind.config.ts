@@ -12,6 +12,7 @@ const config: Config = {
         main: 'var(--main)',
         second: 'var(--second)',
         minor: 'var(--minor)',
+        solid: 'var(--solid)',
         text: 'var(--text)',
         warning: 'var(--warning)',
         error: 'var(--error)',

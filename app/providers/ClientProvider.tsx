@@ -1,6 +1,8 @@
 'use client';
 import { Provider } from 'react-redux';
 import store from '@state/store';
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 
 export default function ClientWrapper({
   children,
@@ -10,16 +12,11 @@ export default function ClientWrapper({
   return (
     <Provider store={store}>
       <div className="flex flex-col min-h-screen bg-second">
-        <header className="text-text p-4 fixed top-0 w-full z-10 bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm">
-          Smart ecommerce example By Taras Kukharets
-        </header>
-        <main className="flex-auto mt-16 p-4 overflow-y-auto">{children}</main>
-        <footer className="text-white p-4 fixed bottom-0 w-full bg-gradient-to-r from-main to-second via-minor z-20">
-          <div className="flex justify-center gap-10">
-            <p>Contact</p>
-            <p>Source code</p>
-          </div>
-        </footer>
+        <Header />
+        <main className="flex-auto mt-16 p-4 overflow-y-auto">
+          <div className="mx-auto max-w-[1200px]">{children}</div>
+        </main>
+        <Footer />
       </div>
     </Provider>
   );

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer from './products';
+import productSlice from './products';
 
+import filterSlice from './filter';
 const store = configureStore({
   reducer: {
-    products: productReducer,
+    products: productSlice,
+    filter: filterSlice,
   },
 });
 export type AppDispatch = typeof store.dispatch;

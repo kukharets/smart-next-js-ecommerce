@@ -1,29 +1,24 @@
 import { ProductCard } from '@components/ProductCard';
 import { IProduct } from '@state/products';
-import { Filter } from '@app/catalog-ssr/Filter';
+import { Filter } from '@containers/Filter';
 
 interface CatalogProps {
-  searchParams: { page?: string; maxPrice?: string };
+  searchParams: { page?: string; maxPrice?: string; minPrice?: string };
 }
 
 export default async function CatalogPage({ searchParams }: CatalogProps) {
-  const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const productsPerPage = 10;
-  const priceMaxRange = searchParams.maxPrice
-    ? parseInt(searchParams.maxPrice)
-    : 100;
+  const priceMaxRange = searchParams.maxPrice || 1000;
+  const priceMinRange = searchParams.minPrice || 1;
 
   const res = await fetch(
-    `https://api.escuelajs.co/api/v1/products?limit=${productsPerPage}&offset=${
-      (page - 1) * productsPerPage
-    }&price_min=1&price_max=${priceMaxRange}`
+    `http://localhost:4000/products?page=1&limit=10&price_min=${priceMinRange}&price_max=${priceMaxRange}`
   );
   const products: IProduct[] = await res.json();
-
+  console.log(products);
   return (
     <div>
       <div className="flex flex-wrap gap-2 justify-center">
-        <Filter />
+        <Filter products={products} />
         {products.map(product => (
           <ProductCard key={product.id} {...product} />
         ))}

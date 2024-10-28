@@ -18,6 +18,8 @@
       }
     ],
     "paths": {
+      "@shared/*": ["shared/*"],
+      "@containers/*": ["app/containers/*"],
       "@app/*": ["app/*"],
       "@components/*": ["app/components/*"],
       "@state/*": ["app/state/*"],
