@@ -1,8 +1,8 @@
 'use client';
-import { EditIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from 'react';
-import { PriceSlider } from '@app/components/PriceSlider';
+import { PriceSlider } from '@components/PriceSlider';
 import { IProduct } from '@state/products';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/solid';
 
 export const Filter = ({ products }: { products: IProduct[] }) => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
@@ -37,7 +37,7 @@ export const Filter = ({ products }: { products: IProduct[] }) => {
               isFilterOpened ? 'w-6 h-6' : 'w-8 h-8'
             }`}
           >
-            <EditIcon />
+            <AdjustmentsHorizontalIcon />
           </svg>
           {!isFilterOpened && (
             <p className="text-2xl font-bold text-primary-400">Filter</p>
