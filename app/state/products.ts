@@ -6,15 +6,10 @@ export interface IProduct {
   title: string;
   price: number;
   description: string;
-  images: string[];
+  image: string;
   creationAt: string;
   updatedAt: string;
-  category: {
-    id: number;
-    name: string;
-    image: string;
-    creationAt: string;
-  };
+  category: string;
 }
 
 interface IProductSliceState {
@@ -31,7 +26,9 @@ const initialState: IProductSliceState = {
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', () =>
   axios
-    .get<IProduct[]>('https://api.escuelajs.co/api/v1/products')
+    .get<
+      IProduct[]
+    >(`http://localhost:4000/products?page=1&limit=10&price_min=${1}&price_max=${1000}`)
     .then(response => response.data)
 );
 
