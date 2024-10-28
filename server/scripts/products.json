@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Elegance Teal Armchair",
+    "price": 30,
+    "description": "Elevate your living room with this modern teal armchair featuring a sleek wooden frame. Perfect for adding a stylish pop of color to any space, this armchair combines comfort with contemporary elegance.",
+    "image": "static/chair1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Classic Leather Sofa",
+    "price": 550,
+    "description": "Experience timeless comfort with this luxurious leather sofa, designed with deep seating and high-quality leather for a touch of classic charm.",
+    "image": "static/sofa1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Vintage Wooden Coffee Table",
+    "price": 120,
+    "description": "Add a rustic touch to your living space with this vintage-inspired wooden coffee table, made from high-quality oak.",
+    "image": "static/table1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Contemporary Bookshelf",
+    "price": 200,
+    "description": "Organize your space with this sleek contemporary bookshelf, featuring minimalist lines and multiple shelves for ample storage.",
+    "image": "static/bookshelf1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Scandinavian Lounge Chair",
+    "price": 180,
+    "description": "This Scandinavian-inspired lounge chair is a blend of modern design and comfort, with soft cushions and natural wood accents.",
+    "image": "static/loungechair1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Industrial Bar Stool",
+    "price": 75,
+    "description": "Bring a touch of industrial style to your home with this sturdy bar stool, featuring a metal frame and wooden seat.",
+    "image": "static/barstool1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Mid-Century Modern Dining Table",
+    "price": 400,
+    "description": "This mid-century modern dining table combines sleek lines with rich wood tones, creating the perfect centerpiece for your dining area.",
+    "image": "static/diningtable1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Cozy Fabric Recliner",
+    "price": 220,
+    "description": "Unwind in style with this cozy fabric recliner, offering superior comfort and a modern design for your living room or den.",
+    "image": "static/recliner1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Minimalist Wall Shelf",
+    "price": 50,
+    "description": "Keep your essentials organized with this minimalist wall shelf, designed to seamlessly blend into any modern space.",
+    "image": "static/wallshelf1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Art Deco Accent Chair",
+    "price": 170,
+    "description": "This stunning Art Deco accent chair adds a bold statement to any room, with its vibrant upholstery and elegant curves.",
+    "image": "static/accentchair1.png",
+    "category": {
+      "id": 3,
+      "name": "Furniture"
+    }
+  }
+]

@@ -14,7 +14,7 @@ export default async function CatalogPage({ searchParams }: CatalogProps) {
     `http://localhost:4000/products?page=1&limit=10&price_min=${priceMinRange}&price_max=${priceMaxRange}`
   );
   const products: IProduct[] = await res.json();
-  console.log(products);
+
   return (
     <div>
       <div className="flex flex-wrap gap-2 justify-center">
